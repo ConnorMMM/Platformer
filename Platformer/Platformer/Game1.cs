@@ -40,7 +40,8 @@ namespace Platformer
             
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            player.Load(Content); //Call the 'Load' function in the Player class
+            player.Load(Content, this); //Call the 'Load' function in the Player class
+            // 'this' basically means 'pass all information in our class through as a variable'
 
             BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
 
@@ -67,6 +68,8 @@ namespace Platformer
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             player.Update(deltaTime); //Call the 'Update' from our Player class
+
+            camera.Position = player.playerSprite.position - new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 
             base.Update(gameTime);
         }
