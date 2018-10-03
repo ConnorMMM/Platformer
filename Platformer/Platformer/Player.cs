@@ -27,6 +27,8 @@ namespace Platformer
         public void Load(ContentManager content, Game1 theGame)
         {
             playerSprite.Load(content, "hero", true);
+            playerSprite.offset = new Vector2(24, 24);
+
             game = theGame; // We are now able to access the information stored in the 'Game1' 
             playerSprite.velocity = Vector2.Zero;
             playerSprite.position = new Vector2(theGame.GraphicsDevice.Viewport.Width / 2, 5000);
