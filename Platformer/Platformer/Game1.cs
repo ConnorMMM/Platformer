@@ -5,6 +5,7 @@ using MonoGame.Extended;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Extended.ViewportAdapters;
+using System.Collections;
 
 namespace Platformer
 {
@@ -20,17 +21,33 @@ namespace Platformer
         TiledMap map = null; //Creates an instance of a Tiled map
         TiledMapRenderer mapRenderer = null; //Creates an instance of what makes a Tiled map
 
+        TiledMapTileLayer collisionLayer;
+        public ArrayList allCollisionTiles = new ArrayList();
+        public Sprite[,] levelGrid;
+
+        public int tileHeight = 0;
+        public int levelTileWidth = 0;
+        public int levelTileHeigth = 0;
+
+        public Rectangle myMap;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = 1600;
+            graphics.PreferredBackBufferHeight = 900;
         }
 
         
         protected override void Initialize()
         {
-            
 
+            myMap.X = 0;
+            myMap.Y = 0;
+            myMap.Width = 6400;
+            myMap.Height = 6400;
             base.Initialize();
         }
 
@@ -51,7 +68,7 @@ namespace Platformer
             map = Content.Load<TiledMap>("Level1");
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
 
-
+            SetUpTiles();
         }
 
         
@@ -60,6 +77,51 @@ namespace Platformer
             
         }
 
+        public void SetUpTiles()
+        {
+            tileHeight = map.TileHeight;
+            levelTileHeigth = map.Height;
+            levelTileWidth = map.Width;
+            levelGrid = new Sprite[levelTileWidth, levelTileHeigth];
+
+            foreach(TiledMapTileLayer layer in map.TileLayers)
+            {
+                if (layer.Name == "Collision")
+                {
+                    collisionLayer = layer;
+                }
+            }
+
+            int columns = 0;
+            int rows = 0;
+            int loopCount = 0;
+            while (loopCount < collisionLayer.Tiles.Count)
+            {
+                if(collisionLayer.Tiles[loopCount].GlobalIdentifier != 0)
+                {
+                    Sprite tileSprite = new Sprite();
+                    tileSprite.position.X = columns * tileHeight;
+                    tileSprite.position.Y = rows * tileHeight;
+                    tileSprite.width = tileHeight;
+                    tileSprite.height = tileHeight;
+                    tileSprite.UpdateHitBox();
+                    allCollisionTiles.Add(tileSprite);
+                    levelGrid[columns, rows] = tileSprite;
+                }
+
+                columns++;
+
+                if (columns == levelTileWidth)
+                {
+                    columns = 0;
+                    rows++;
+                }
+
+                loopCount++;
+
+            }
+
+        }
         
         protected override void Update(GameTime gameTime)
         {
