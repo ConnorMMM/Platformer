@@ -26,8 +26,11 @@ namespace Platformer
         public int rightEdge = 0;
         public int topEdge = 0;
         public int bottomEdge = 0;
-        
 
+        List<AnimatedTexture> animations = new List<AnimatedTexture>();
+        List<Vector2> animationOffsets = new List<Vector2>();
+        int currentAnimation = 0;
+        
         public Sprite()
         {
 
@@ -55,15 +58,21 @@ namespace Platformer
             bottomEdge = topEdge + height;
         }
 
+        public void AddAnimation(AnimatedTexture animation, int xOffset = 0, int yOffset = 0)
+        {
+            animations.Add(animation);
+            animationOffsets.Add(new Vector2(xOffset, yOffset));
+        }
 
         public void Update(float deltaTime)
         {
-
+            animations[currentAnimation].UpdateFrame(deltaTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position - offset, Color.White);
+            //spriteBatch.Draw(texture, position - offset, Color.White);
+            animations[currentAnimation].DrawFrame(spriteBatch, position + animationOffsets[currentAnimation]);
         }
 
     }
