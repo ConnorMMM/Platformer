@@ -31,6 +31,7 @@ namespace Platformer
             AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
             animation.Load(content, "walk", 12, 20);
             playerSprite.AddAnimation(animation, 0, -5);
+            playerSprite.Pause();
 
             playerSprite.offset = new Vector2(24, 24);
 
@@ -46,10 +47,14 @@ namespace Platformer
             if (Keyboard.GetState().IsKeyDown(Keys.Left) == true || Keyboard.GetState().IsKeyDown(Keys.A) == true)
             {
                 localAcceleration.X = -runSpeed;
+                playerSprite.SetFlipped(true);
+                playerSprite.Play();
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right) == true || Keyboard.GetState().IsKeyDown(Keys.D) == true)
             {
                 localAcceleration.X = runSpeed;
+                playerSprite.SetFlipped(false);
+                playerSprite.Play();
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Up) == true || Keyboard.GetState().IsKeyDown(Keys.W) == true)
             {
@@ -58,6 +63,12 @@ namespace Platformer
             if (Keyboard.GetState().IsKeyDown(Keys.Down) == true || Keyboard.GetState().IsKeyDown(Keys.S) == true)
             {
                 localAcceleration.Y = runSpeed;
+            }
+
+            if (Keyboard.GetState().IsKeyUp(Keys.Left) == true && Keyboard.GetState().IsKeyUp(Keys.Right) == true && 
+                Keyboard.GetState().IsKeyUp(Keys.A) == true && Keyboard.GetState().IsKeyUp(Keys.D) == true)
+            {
+                playerSprite.Pause();
             }
 
             //foreach (Sprite tile in game.allCollisionTiles)
