@@ -66,3 +66,13 @@ C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x
 C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\MonoGame.Extended.Tiled.xml
 C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Newtonsoft.Json.xml
 C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\walk.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\heart.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\hero 2.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\Damage.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\Death.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\Jump.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\Superhero_violin.wma
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\Superhero_violin.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\Pick_Up.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\chest.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\zombie.xnb

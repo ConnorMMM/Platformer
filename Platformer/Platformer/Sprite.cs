@@ -16,6 +16,8 @@ namespace Platformer
         public Vector2 velocity = Vector2.Zero;
         public Vector2 offset = Vector2.Zero;
 
+        public bool canJump = false;
+
         Texture2D texture;
 
         public int width = 0;
