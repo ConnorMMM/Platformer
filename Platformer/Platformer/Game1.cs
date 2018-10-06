@@ -11,6 +11,7 @@ using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Extended.ViewportAdapters;
 using System.Collections;
 using System.Collections.Generic;
+using ParticleEffects;
 
 namespace Platformer
 {
@@ -48,6 +49,9 @@ namespace Platformer
 
 
         public Rectangle myMap;
+
+        public Emitter fireEmitter = null;
+        public Texture2D fireTexture = null;
 
 #if (DEBUG)
         static public Texture2D whiteRectangle;
@@ -101,6 +105,9 @@ namespace Platformer
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
 #endif
+
+            fireTexture = Content.Load<Texture2D>("fire");
+            fireEmitter = new Emitter(fireTexture, player.playerSprite.position);
 
             SetUpTiles();
             LoadObjects();
@@ -174,6 +181,19 @@ namespace Platformer
             }
 
             camera.Position = player.playerSprite.position - new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
+            
+            if (player.wasMovingRight == true)
+            {
+                fireEmitter.position = new Vector2(player.playerSprite.position.X + 20, player.playerSprite.position.Y + 35);
+            }
+            if (player.wasMovingLeft == true)
+            {
+                fireEmitter.position = new Vector2(player.playerSprite.position.X + 60, player.playerSprite.position.Y + 35);
+            }
+
+            fireEmitter.minVelocity = new Vector2(-player.playerSprite.velocity.X, player.playerSprite.velocity.Y);
+            fireEmitter.maxVelocity = new Vector2(-player.playerSprite.velocity.X * 2, player.playerSprite.velocity.Y * 2);
+            fireEmitter.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -196,6 +216,11 @@ namespace Platformer
             player.Draw(spriteBatch);
 
             goal.Draw(spriteBatch);
+
+            if (player.notMoving == false)
+            {
+                fireEmitter.Draw(spriteBatch);
+            }
 
             foreach (Enemy enemy in enemies)
             {

@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace Platformer
 {
     public class Player
@@ -21,6 +22,11 @@ namespace Platformer
         float friction = 500;
         float terminalVelocity = 500;
         public float jumpStrength = 51000;
+
+        public bool wasMovingLeft; 
+        public bool wasMovingRight;
+
+        public bool notMoving;
 
         Collision collision = new Collision();
 
@@ -148,6 +154,12 @@ namespace Platformer
             playerSprite.Update(deltaTime);
             playerSprite.UpdateHitBox();
 
+            wasMovingLeft = playerSprite.velocity.X < 0;
+            wasMovingRight = playerSprite.velocity.X > 0;
+
+            notMoving = playerSprite.velocity.X == 0 && playerSprite.velocity.Y == 0;
+
+
             if (collision.IsColliding(playerSprite, game.goal.chestSprite))
             {
                 game.Exit(); // we will fix this to work better soonish
@@ -156,11 +168,13 @@ namespace Platformer
             {
                 playerSprite = collision.CollideWithMonster(this, game.enemies[i], deltaTime, game);
             }
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             playerSprite.Draw(spriteBatch);
+            
         }
 
     }

@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/s182214/Documents/GitHub/Platformer/Platformer/Platformer/Content/Damage.wav</SourceFile>
   <SourceTime>2018-10-05T11:26:12.5447613+10:00</SourceTime>
   <DestFile>C:/Users/s182214/Documents/GitHub/Platformer/Platformer/Platformer/Content/bin/Windows/Damage.xnb</DestFile>
-  <DestTime>2018-10-05T11:40:44.0679646+10:00</DestTime>
+  <DestTime>2018-10-06T10:15:23.2004449+10:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

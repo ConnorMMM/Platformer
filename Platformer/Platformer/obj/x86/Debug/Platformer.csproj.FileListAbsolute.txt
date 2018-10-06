@@ -76,3 +76,5 @@ C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x
 C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\Pick_Up.xnb
 C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\chest.xnb
 C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\zombie.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\fire.xnb
+C:\Users\s182214\Documents\GitHub\Platformer\Platformer\Platformer\bin\Windows\x86\Debug\Content\spark.xnb
