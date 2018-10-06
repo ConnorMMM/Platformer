@@ -45,7 +45,9 @@ namespace Platformer
             jumpSound = content.Load<SoundEffect>("Jump");
             jumpSoundInstance = jumpSound.CreateInstance();
 
-            playerSprite.offset = new Vector2(24, 24);
+            playerSprite.width = 55;
+            playerSprite.height = 70;
+            playerSprite.offset = new Vector2(-13, 4);
 
             game = theGame; // We are now able to access the information stored in the 'Game1' 
             playerSprite.velocity = Vector2.Zero;

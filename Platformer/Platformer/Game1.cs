@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿#define DEBUG
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -47,6 +49,11 @@ namespace Platformer
 
         public Rectangle myMap;
 
+#if (DEBUG)
+        static public Texture2D whiteRectangle;
+#endif
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -90,6 +97,11 @@ namespace Platformer
             gameMusic = Content.Load<Song>("Superhero_violin");
             MediaPlayer.Play(gameMusic);
 
+#if (DEBUG)
+            whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
+            whiteRectangle.SetData(new[] { Color.White });
+#endif
+
             SetUpTiles();
             LoadObjects();
         }
@@ -97,7 +109,9 @@ namespace Platformer
         
         protected override void UnloadContent()
         {
-            
+#if (DEBUG)
+            whiteRectangle.Dispose();
+#endif
         }
 
         public void SetUpTiles()

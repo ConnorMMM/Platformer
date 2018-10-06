@@ -25,9 +25,9 @@ namespace Platformer
             animation.Load(content, "zombie", 4, 5);
 
             enemySprite.AddAnimation(animation, 16, 0);
-            enemySprite.width = 64;
-            enemySprite.height = 64;
-            enemySprite.offset = new Vector2(8, 8);
+            enemySprite.width = 34;
+            enemySprite.height = 30;
+            enemySprite.offset = new Vector2(-16, 2);
         }
 
         public void Update (float deltaTime)
